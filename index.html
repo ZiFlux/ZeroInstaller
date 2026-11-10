@@ -45,6 +45,10 @@ h2{font-size:22px;line-height:32px;font-weight:600;margin-bottom:24px}
 .step p{color:var(--t2);font-size:14px;line-height:22px}
 .note{margin-top:16px;color:var(--t3);font-size:14px;line-height:22px}
 kbd{font:12px var(--mono);border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:var(--t1)}
+.fb{display:grid;grid-template-columns:240px 1fr;gap:32px}
+.fb p{color:var(--t2);font-size:14px;line-height:22px}
+.fb iframe{width:100%;height:760px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.fb .soon{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;color:var(--t3)}
 .news{display:grid;grid-template-columns:240px 1fr;gap:32px}
 .news h3{font-size:17px;font-weight:600}
 .news .date{color:var(--t3);font:13px var(--mono);margin-top:4px}
@@ -58,7 +62,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  .hero{grid-template-columns:1fr;padding:40px 0;gap:32px}
  h1{font-size:32px;line-height:40px}
  .emblem{max-width:220px;order:-1}
- .steps,.news{grid-template-columns:1fr}
+ .steps,.news,.fb{grid-template-columns:1fr}
  header nav a:not(:last-child){display:none}
 }
 </style>
@@ -66,15 +70,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <body>
 <header><div class="wrap">
   <a class="brand" href="./"><img src="logo.svg" alt="">Zero Line</a>
-  <nav><a href="#install">Установка</a><a href="guide.html">Гайд и правила</a><a href="#news">Что нового</a><a href="https://github.com/ZiFlux/ZeroInstaller">Исходник</a></nav>
+  <nav><a href="#install">Установка</a><a href="guide.html">Гайд и правила</a><a href="#news">Что нового</a><a href="#feedback">Отзывы</a><a href="https://github.com/ZiFlux/ZeroInstaller">Исходник</a></nav>
 </div></header>
 
 <main class="wrap">
   <div class="hero">
     <div>
       <h1>Командная война на&nbsp;Minecraft&nbsp;1.21.1</h1>
-      <p class="lead">Две стороны, ядра-реакторы, авиаудары и груз с неба. Установщик сам ставит сборку, NeoForge и обновления — одна кнопка, без ручной возни с модами.</p>
-      <div class="front"><i style="background:var(--ru)"></i>Россия<span style="color:var(--t3)">против</span><i style="background:var(--nato)"></i>НАТО</div>
+      <p class="lead">Две команды, ядра-реакторы, авиаудары и груз с неба. Установщик сам ставит сборку, NeoForge и обновления — одна кнопка, без ручной возни с модами.</p>
+      <div class="front"><i style="background:var(--ru)"></i><i style="background:var(--nato)"></i>Командные сражения · ядра · рейды</div>
       <div class="cta">
         <a class="btn" href="https://github.com/ZiFlux/ZeroInstaller/releases/latest/download/ZeroInstaller.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
@@ -83,7 +87,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <a class="ghost" href="#install">Как установить</a>
         <a class="ghost" href="guide.html">Гайд и правила</a>
       </div>
-      <p class="meta">ZeroInstaller 1.3.3 · 7,0 МБ · Windows 10/11</p>
+      <p class="meta">ZeroInstaller 1.3.4 · 7,0 МБ · Windows 10/11</p>
     </div>
     <div class="emblem"><img src="logo.svg" alt="Эмблема Zero Line"></div>
   </div>
@@ -110,8 +114,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
   <section id="news">
     <div class="news">
-      <div><h3>Zero Line 1.50.0</h3><p class="date">10 ноября 2026</p></div>
-      <div><div class="ns"><h4>Сборка</h4><ul><li>Урон оружия (F7): добавлено оружие TaCZ — общий множитель &#171;TaCZ: пули&#187; и строка на каждый ствол; урон стволов TaCZ подогнан под оружие Superb Warfare с учётом брони</li><li>FFA-сетап: к стволам TaCZ выдаются все подходящие обвесы и подсказка, как их поставить (Z — модификации)</li><li>Оружие TaCZ больше не роняет гильзы и магазины при перезарядке</li><li>Взрывы дронов снова обычные — без отдельных эффектов и звуков</li><li>Меньше лагов в перестрелках: эффекты попаданий TaCZ легче, оружие вдали — упрощённые модели, техника вдали обновляется реже</li><li>Облегчённая версия: без дальней прорисовки (Distant Horizons), ускоренный рендер техники остаётся</li><li>Патроны бесконечные во всех режимах (Superb Warfare и TaCZ) — покупать не нужно, перезаряжаться нужно; отключается в F7 → &#171;Классы и магазин&#187;</li><li>Зум теперь на J (раньше V — мешал удару прикладом и смене прицела); переназначить — Настройки → Управление</li><li>Основные клавиши — в левой части клавиатуры: способность класса на B (была N), режим огня Superb Warfare на G (как у TaCZ), взаимодействие TaCZ на X; двойники с R, G, Z, C, K и B сняты. Только у тех, кто эти клавиши не менял</li><li>До рейдов пули и осколочные гранаты TaCZ не ломают зону вражеской базы (двери, стёкла, стены); торгоматы, ящики, ядра и постройки — никогда. С рейдов — можно</li><li>Светошумовые гранаты — в торгомате, раздел &#171;Общее&#187;</li><li>Новые медали: &#171;Снайпер&#187; — убийство с 200+ блоков, &#171;Тихий&#187; — больше всех убийств с глушителем</li></ul></div>
+      <div><h3>Zero Line 1.50.0</h3><p class="date">11 ноября 2026</p></div>
+      <div><div class="ns"><h4>Сборка</h4><ul><li>Урон оружия (F7): добавлено оружие TaCZ — общий множитель &#171;TaCZ: пули&#187; и строка на каждый ствол; урон стволов TaCZ подогнан под оружие Superb Warfare с учётом брони</li><li>FFA-сетап: к стволам TaCZ выдаются все подходящие обвесы и подсказка, как их поставить (Z — модификации)</li><li>Оружие TaCZ больше не роняет гильзы и магазины при перезарядке</li><li>Взрывы дронов снова обычные — без отдельных эффектов и звуков</li><li>Меньше лагов в перестрелках: эффекты попаданий TaCZ легче, оружие вдали — упрощённые модели, техника вдали обновляется реже</li><li>Облегчённая версия: без дальней прорисовки (Distant Horizons), ускоренный рендер техники остаётся</li><li>Патроны бесконечные во всех режимах (Superb Warfare и TaCZ) — покупать не нужно, перезаряжаться нужно; отключается в F7 → &#171;Классы и магазин&#187;</li><li>Зум теперь на J (раньше V — мешал удару прикладом и смене прицела); переназначить — Настройки → Управление</li><li>Основные клавиши — в левой части клавиатуры: способность класса на B (была N), режим огня Superb Warfare на G (как у TaCZ), взаимодействие TaCZ на X; двойники с R, G, Z, C, K и B сняты. Только у тех, кто эти клавиши не менял</li><li>До рейдов пули и осколочные гранаты TaCZ не ломают зону вражеской базы (двери, стёкла, стены); торгоматы, ящики, ядра и постройки — никогда. С рейдов — можно</li><li>Светошумовые гранаты — в торгомате, раздел &#171;Общее&#187;</li><li>Обвесы TaCZ — в торгомате, в разделе своего класса: только те, что подходят к оружию класса (15–45 пачек, сильнее — дороже)</li></ul></div>
 <div class="ns"><h4>Лаунчер</h4><ul><li>Уборщик удаляет файлы старых установок (voinushki_build)</li><li>Вид миникарты и карты мира — как у автора сборки (ставится один раз на каждое обновление)</li><li>Новый вид: спокойнее и чище, без лишних рамок и подсветки</li><li>Сам находит папку Legacy Launcher, обычного лаунчера и Minecraft на других дисках (D:\Minecraft\game)</li><li>Под папкой видно версию NeoForge и стоит ли уже сборка; лупа рядом — найти папки заново</li><li>&#171;Убрать лишнее&#187;: моды не из сборки, старый резерв и логи — в Корзину Windows по списку</li><li>Другая версия NeoForge больше не пугает: только подсказка, установка не держится</li><li>Облегчённая сборка сама настраивает графику на максимум FPS (без теней, облаков, сглаживания света, лишних анимаций), а дальность прорисовки сущностей — 500%: игроки и техника видны далеко. Свои настройки потом можно менять — повторно не перезаписываются; при переходе на полную прежние вернутся</li><li>Zero Line 1.49.0</li></ul></div>
 <div class="ns"><h4>Сборка</h4><ul><li>Груз: оружие выпадает заряженным и с патронами (на 2 магазина, к гранатомёту — 2 ракеты)</li><li>Груз: снайперок, убивающих с одного попадания, больше нет; алмазных блоков — не больше 4 на контейнер</li><li>Сбитый самолёт: контейнер теперь редкий, элитный — с небольшим шансом</li><li>Баланс: АК-47 бьёт сильнее (догоняет остальные автоматы), Glock 17 и MP-443 — тоже немного сильнее</li><li>Точка захвата: появляется в начале сражений и действует до мёртвой зоны, брать можно несколько раз</li><li>Рейды: бомбардировок вдвое больше</li><li>Мёртвая зона смещается: центр петляет и заканчивается рядом с центром карты, но не точно в нём</li><li>Малая игра (меньше 8 бойцов): без техники, гранатомётов, миномётов, целеуказателя и бомбардировок; дроны и C4 остаются</li><li>Zero Line 1.48.0</li></ul></div>
 <div class="ns"><h4>Сборка</h4><ul><li>FFA: только что появившийся неуязвим (лёгкое мерцание вокруг), пока не сдвинется, не атакует или не пройдут 10 с — вместо неуязвимых баз</li><li>FFA: на старте игроки расходятся по точкам поровну; метки точек появления с карты убраны</li><li>FFA: набор сам надевается (броня, щит, одежда), оружие заряжено, броня не ломается; без инструментов, мин и ножей</li><li>FFA: бесконечный общий запас патронов (перезарядка остаётся), после рестарта запас обнуляется</li><li>FFA: вещи падают в тело, его можно обыскать — через 5 с оно исчезает вместе с меткой смерти; одежда из аксессуаров не выпадает</li><li>FFA: класс и снаряжение (Россия или НАТО) — в F6 прямо во время матча; похвала в FFA бесплатная</li><li>FFA: в счётчике больше нет &#171;ты 0&#187; — показывает твои фраги, даже если ты в тройке лидеров</li><li>Одежда в слотах аксессуаров и косметической брони очищается вместе с инвентарём (в том числе по /clear)</li><li>Риски голода тратятся слева направо; закрыта щель между задней и боковыми стенками киоска торгомата</li><li>Меньше провисаний: повторяющиеся ошибки видеокарты больше не пишутся в лог сотни раз в секунду</li><li>Zero Line 1.47.1</li></ul></div>
@@ -119,7 +123,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="ns"><h4>Лаунчер</h4><ul><li>Сервер опрашивается раз в минуту и только когда окно открыто — меньше риск, что защита хостинга временно закроет IP (ошибка &#171;getsockopt&#187; при входе)</li><li>При установке пресет эффектов мода ставится по сборке: полная — &#171;Полный&#187;, облегчённая — &#171;Слабый ПК&#187;</li></ul></div></div>
     </div>
   </section>
+  <section id="feedback">
+    <div class="fb">
+      <div><h2 style="margin-bottom:8px">Отзывы</h2><p>Что понравилось, что бесит, какой баг поймал, чего не хватает. Всё читаем — лучшее попадает в следующие версии.</p></div>
+      <div id="fbBox"><iframe id="fbFrame" title="Отзыв о Zero Line" loading="lazy" data-src="https://docs.google.com/forms/d/e/1FAIpQLSdGSHqGuSoE4TJJXaTb8djLH8AfE6uEwKZ2kWXcp3BrmnktHw/viewform?usp=header&amp;embedded=true">Загрузка формы…</iframe></div>
+    </div>
+  </section>
 </main>
+<script>
+(function(){var f=document.getElementById('fbFrame'),u=f.getAttribute('data-src');
+ if(!u||u.indexOf('{{')===0){document.getElementById('fbBox').innerHTML='<div class="soon">Форма отзывов скоро появится.</div>';return}
+ f.src=u;})();
+</script>
 
 <footer><div class="wrap">
   <span>Zero Line · фанатская сборка, не связана с Mojang и Microsoft</span>
