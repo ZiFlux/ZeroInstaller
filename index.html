@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Line — установщик</title>
+<meta name="description" content="Zero Line — командная война на Minecraft 1.21.1. Установщик ставит и обновляет сборку сам.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;
+ --bg0:#0c0e0d;--bg:#111413;--card:#161a18;--raised:#1f2421;--line:rgba(236,238,230,.08);--line2:rgba(236,238,230,.14);
+ --t1:#ecede6;--t2:#a5aa9f;--t3:#80867b;--acc:#c9a85a;--acc2:#dcbf78;--accInk:#16130b;--ru:#d84a4a;--nato:#4a86e0;
+ --mono:"Cascadia Mono",Consolas,ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font:15px/24px "Segoe UI Variable Text","Segoe UI",Roboto,Arial,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none}
+.brand img{width:28px;height:28px}
+header nav a{color:var(--t2);text-decoration:none;font-size:14px;margin-left:24px}
+header nav a:hover{color:var(--t1)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 0 64px}
+h1{font-size:44px;line-height:52px;font-weight:600;letter-spacing:-.01em}
+.lead{color:var(--t2);font-size:17px;line-height:28px;margin-top:16px;max-width:520px}
+.front{display:flex;align-items:center;gap:8px;margin-top:24px;font-size:14px;color:var(--t2)}
+.front i{display:inline-block;width:18px;height:3px;border-radius:2px}
+.cta{display:flex;align-items:center;gap:16px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:10px;background:var(--acc);color:var(--accInk);font-weight:600;text-decoration:none;transition:background .15s}
+.btn:hover{background:var(--acc2)}
+.btn:focus-visible,.ghost:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+.btn svg{width:18px;height:18px}
+.ghost{color:var(--t2);text-decoration:none;font-size:14px}
+.ghost:hover{color:var(--t1)}
+.meta{margin-top:12px;color:var(--t3);font:13px/20px var(--mono);font-variant-numeric:tabular-nums}
+.emblem{justify-self:center;width:100%;max-width:360px;aspect-ratio:1;display:grid;place-items:center;border-radius:20px;background:radial-gradient(closest-side,#1a1f1c,var(--bg) 100%);border:1px solid var(--line)}
+.emblem img{width:62%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:22px;line-height:32px;font-weight:600;margin-bottom:24px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.step b{display:block;font-weight:600;margin-bottom:6px}
+.step b::before{counter-increment:s;content:counter(s);font:13px var(--mono);color:var(--acc);margin-right:10px}
+.step p{color:var(--t2);font-size:14px;line-height:22px}
+.note{margin-top:16px;color:var(--t3);font-size:14px;line-height:22px}
+kbd{font:12px var(--mono);border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:var(--t1)}
+.news{display:grid;grid-template-columns:240px 1fr;gap:32px}
+.news h3{font-size:17px;font-weight:600}
+.news .date{color:var(--t3);font:13px var(--mono);margin-top:4px}
+.ns{margin-bottom:20px}
+.ns h4{font-size:13px;font-weight:500;color:var(--acc);margin-bottom:8px}
+.ns li{list-style:none;color:var(--t2);font-size:14px;line-height:22px;padding-left:16px;position:relative;margin-bottom:4px}
+.ns li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--t3)}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--t3);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:760px){
+ .hero{grid-template-columns:1fr;padding:40px 0;gap:32px}
+ h1{font-size:32px;line-height:40px}
+ .emblem{max-width:220px;order:-1}
+ .steps,.news{grid-template-columns:1fr}
+ header nav a:not(:last-child){display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="">Zero Line</a>
+  <nav><a href="#install">Установка</a><a href="#news">Что нового</a><a href="https://github.com/ZiFlux/ZeroInstaller">Исходник</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Командная война на&nbsp;Minecraft&nbsp;1.21.1</h1>
+      <p class="lead">Две стороны, ядра-реакторы, авиаудары и груз с неба. Установщик сам ставит сборку, NeoForge и обновления — одна кнопка, без ручной возни с модами.</p>
+      <div class="front"><i style="background:var(--ru)"></i>Россия<span style="color:var(--t3)">против</span><i style="background:var(--nato)"></i>НАТО</div>
+      <div class="cta">
+        <a class="btn" href="https://github.com/ZiFlux/ZeroInstaller/releases/latest/download/ZeroInstaller.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+          Скачать установщик
+        </a>
+        <a class="ghost" href="#install">Как установить</a>
+      </div>
+      <p class="meta">ZeroInstaller 1.3.2 · 10,2 МБ · Windows 10/11</p>
+    </div>
+    <div class="emblem"><img src="logo.svg" alt="Эмблема Zero Line"></div>
+  </div>
+
+  <section id="install">
+    <h2>Установка</h2>
+    <div class="steps">
+      <div class="step"><b>Скачай и запусти</b><p>ZeroInstaller.exe — один файл, ставить его не нужно.</p></div>
+      <div class="step"><b>Выбери папку</b><p>Установщик сам находит лаунчер Minecraft. Можно указать свою папку.</p></div>
+      <div class="step"><b>Нажми «Установить»</b><p>Дальше — кнопка «Обновить», когда выходит новая версия сборки.</p></div>
+    </div>
+    <p class="note">Windows может предупредить «Неизвестный издатель»: файл не подписан. Нажми <kbd>Подробнее</kbd> → <kbd>Выполнить в любом случае</kbd>.</p>
+  </section>
+
+  <section id="news">
+    <div class="news">
+      <div><h3>Zero Line 1.50.0</h3><p class="date">10 ноября 2026</p></div>
+      <div><div class="ns"><h4>Сборка</h4><ul><li>Бомбардировка: бомбардировщик кладёт ковёр бомб — бомбы падают прямо из самолёта, без рассинхрона</li><li>Авиация: самолёт, сброс и звук теперь совпадают; звук громче и слышен дальше, пролёты — каждые 2 минуты</li><li>Ядро в выживании ломается и ударами по верхней части — трещины видны сразу</li><li>Итоги матча: вкладки — заметная полоса сверху, переключение кликом, 1–3, Tab или стрелками</li><li>Медали: голубая по центру; новые — Полевая кухня, Кузнечик, Пень, Десант без парашюта</li><li>У каждого бойца в итогах — звание, бывают и шуточные</li><li>FFA: своя статистика — лучшая серия, дольше всех жил, первая кровь, месть</li><li>FFA: табло в инвентаре со всеми бойцами по фрагам, похвала по клику</li><li>Книга квестов не выдаётся в FFA и после первой смерти в матче</li><li>Меньше дёрганья моделей игроков с оружием Superb Warfare, когда в руках оружие Point Blank</li><li>Итоги матча: вкладка &#171;Бойцы&#187; — список по очкам и карточка бойца с медалями и показателями</li><li>Медали: у каждой своя картинка; новые — Охотник, Душа компании, Строитель, Неваляшка, Скряга, Пацифист, Мишень</li></ul></div>
+<div class="ns"><h4>Лаунчер</h4><ul><li>Уборщик удаляет файлы старых установок (voinushki_build)</li><li>Вид миникарты и карты мира — как у автора сборки (ставится один раз на каждое обновление)</li><li>Новый вид: спокойнее и чище, без лишних рамок и подсветки</li><li>Сам находит папку Legacy Launcher, обычного лаунчера и Minecraft на других дисках (D:\Minecraft\game)</li><li>Под папкой видно версию NeoForge и стоит ли уже сборка; лупа рядом — найти папки заново</li><li>&#171;Убрать лишнее&#187;: моды не из сборки, старый резерв и логи — в Корзину Windows по списку</li><li>Другая версия NeoForge больше не пугает: только подсказка, установка не держится</li><li>Облегчённая сборка сама настраивает графику на максимум FPS (без теней, облаков, сглаживания света, лишних анимаций), а дальность прорисовки сущностей — 500%: игроки и техника видны далеко. Свои настройки потом можно менять — повторно не перезаписываются; при переходе на полную прежние вернутся</li><li>Zero Line 1.49.0</li></ul></div>
+<div class="ns"><h4>Сборка</h4><ul><li>Груз: оружие выпадает заряженным и с патронами (на 2 магазина, к гранатомёту — 2 ракеты)</li><li>Груз: снайперок, убивающих с одного попадания, больше нет; алмазных блоков — не больше 4 на контейнер</li><li>Сбитый самолёт: контейнер теперь редкий, элитный — с небольшим шансом</li><li>Баланс: АК-47 бьёт сильнее (догоняет остальные автоматы), Glock 17 и MP-443 — тоже немного сильнее</li><li>Точка захвата: появляется в начале сражений и действует до мёртвой зоны, брать можно несколько раз</li><li>Рейды: бомбардировок вдвое больше</li><li>Мёртвая зона смещается: центр петляет и заканчивается рядом с центром карты, но не точно в нём</li><li>Малая игра (меньше 8 бойцов): без техники, гранатомётов, миномётов, целеуказателя и бомбардировок; дроны и C4 остаются</li><li>Zero Line 1.48.0</li></ul></div>
+<div class="ns"><h4>Сборка</h4><ul><li>FFA: только что появившийся неуязвим (лёгкое мерцание вокруг), пока не сдвинется, не атакует или не пройдут 10 с — вместо неуязвимых баз</li><li>FFA: на старте игроки расходятся по точкам поровну; метки точек появления с карты убраны</li><li>FFA: набор сам надевается (броня, щит, одежда), оружие заряжено, броня не ломается; без инструментов, мин и ножей</li><li>FFA: бесконечный общий запас патронов (перезарядка остаётся), после рестарта запас обнуляется</li><li>FFA: вещи падают в тело, его можно обыскать — через 5 с оно исчезает вместе с меткой смерти; одежда из аксессуаров не выпадает</li><li>FFA: класс и снаряжение (Россия или НАТО) — в F6 прямо во время матча; похвала в FFA бесплатная</li><li>FFA: в счётчике больше нет &#171;ты 0&#187; — показывает твои фраги, даже если ты в тройке лидеров</li><li>Одежда в слотах аксессуаров и косметической брони очищается вместе с инвентарём (в том числе по /clear)</li><li>Риски голода тратятся слева направо; закрыта щель между задней и боковыми стенками киоска торгомата</li><li>Меньше провисаний: повторяющиеся ошибки видеокарты больше не пишутся в лог сотни раз в секунду</li><li>Zero Line 1.47.1</li></ul></div>
+<div class="ns"><h4>Сборка</h4><ul><li>Новый чат: вкладки &#171;Общий&#187; и &#171;Команда&#187; (клик или Ctrl+Tab), командные сообщения видит только своя команда</li><li>Цветные эмодзи в чате: через Win + ., кодом вроде :fire: или из панели — кнопка со смайликом справа от строки ввода</li><li>Чат в стиле торгомата: тёмный полупрозрачный фон, метки РФ / НАТО у ников, клик по нику — личное сообщение</li><li>Похвала как в Dota: клик по нику в чате → &#171;Похвалить&#187; за 5 пачек, они уходят похваленному; всем — &#171;A 👏 похвалил B&#187;</li><li>Совместные события: туман + ночь, буря + ночь с ливнем, бомбардировка + туман и другие; таймеры у полосы фазы столбиком</li><li>Пресет &#171;Слабый ПК&#187; (⚙ Zero Line → Пресет эффектов): меньше тумана-частиц, дыма и искр, дождь ближе — в облегчённой сборке включён сам</li><li>Счётчик TPS в списке игроков (Tab) теперь настоящий: берётся из spark раз в 30 с</li><li>Админу: настройка &#171;События: шанс совместного&#187; (по умолчанию 25%)</li><li>В тумане и бурю сквозь дальнюю прорисовку Voxy больше не видно солнца, заката и бежевых &#171;пещер&#187;, в том числе в режиме наблюдателя</li><li>Voxy со снайперкой: в прицеле дальняя прорисовка скрывается, чтобы горизонт не &#171;уплывал&#187;; с оружием PointBlank — всё время, пока оно в руке</li><li>Метки торгоматов и обменников на мини-карте и большой карте (M) больше не пропадают сами по себе; админу: &#171;Пересобрать&#187; в &#171;Дебаге&#187; заодно обновляет метки у всех игроков</li></ul></div>
+<div class="ns"><h4>Лаунчер</h4><ul><li>Сервер опрашивается раз в минуту и только когда окно открыто — меньше риск, что защита хостинга временно закроет IP (ошибка &#171;getsockopt&#187; при входе)</li><li>При установке пресет эффектов мода ставится по сборке: полная — &#171;Полный&#187;, облегчённая — &#171;Слабый ПК&#187;</li></ul></div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>Zero Line · фанатская сборка, не связана с Mojang и Microsoft</span>
+  <a href="https://github.com/ZiFlux/ZeroInstaller/releases">Все версии</a>
+</div></footer>
+</body>
+</html>
