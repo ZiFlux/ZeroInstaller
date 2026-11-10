@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Line — гайд и правила</title>
+<meta name="description" content="Гайд и правила Zero Line: фазы матча, ядро, классы, клавиши, магазин, события, режимы и медали.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;
+ --bg:#111413;--card:#161a18;--raised:#1f2421;--line:rgba(236,238,230,.08);--line2:rgba(236,238,230,.14);
+ --t1:#ecede6;--t2:#a5aa9f;--t3:#80867b;--acc:#c9a85a;--acc2:#dcbf78;--accInk:#16130b;--ru:#d84a4a;--nato:#4a86e0;
+ --mono:"Cascadia Mono",Consolas,ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:80px}
+body{background:var(--bg);color:var(--t1);font:15px/24px "Segoe UI Variable Text","Segoe UI",Roboto,Arial,sans-serif}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(17,20,19,.92);backdrop-filter:blur(8px);z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;white-space:nowrap}
+.brand img{width:28px;height:28px}
+header nav{display:flex;align-items:center;gap:24px}
+header nav a{color:var(--t2);text-decoration:none;font-size:14px}
+header nav a:hover,header nav a.on{color:var(--t1)}
+.search{height:36px;width:260px;border-radius:8px;border:1px solid var(--line2);background:var(--card);color:var(--t1);padding:0 12px;font:inherit;font-size:14px}
+.search:focus{outline:2px solid var(--acc2);outline-offset:1px}
+.layout{display:grid;grid-template-columns:240px 1fr;gap:40px;padding:32px 0 64px}
+aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 120px);overflow:auto}
+aside h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);font-weight:600;margin:18px 0 6px}
+aside h3:first-child{margin-top:0}
+aside a{display:block;color:var(--t2);text-decoration:none;font-size:14px;line-height:20px;padding:5px 10px;border-radius:6px;border-left:2px solid transparent}
+aside a:hover{color:var(--t1);background:var(--card)}
+aside a.on{color:var(--t1);border-left-color:var(--acc);background:var(--card)}
+h1{font-size:32px;line-height:40px;font-weight:600}
+.lead{color:var(--t2);margin-top:8px;max-width:640px}
+.chapter{margin-top:48px}
+.chapter>h2{font-size:22px;line-height:30px;font-weight:600}
+.chapter>.sub{color:var(--t3);font-size:14px;margin-top:2px}
+.quests{display:grid;gap:12px;margin-top:16px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.q h3{font-size:17px;line-height:24px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.q h3 small{font-size:13px;font-weight:400;color:var(--t3)}
+.q h3 a{color:var(--t3);text-decoration:none;font-weight:400;opacity:0;transition:opacity .15s}
+.q:hover h3 a{opacity:1}
+.body{margin-top:10px;color:var(--t1);font-size:14.5px;line-height:23px}
+.body p{margin:0}
+.body .gap{height:10px}
+.body .lead2{color:var(--t2);font-style:italic}
+.body .sec{margin-top:4px;font-weight:600}
+.body .note{color:var(--t3)}
+.b{font-weight:600}.i{font-style:italic}
+.c0{color:#9aa}.c4{color:#d84a4a}.c5{color:#b98ae0}.c6{color:var(--acc)}.c7{color:var(--t2)}.c9{color:#6fa3f0}
+.ca{color:#8ce07a}.cb{color:#7ad8ff}.cc{color:#ff7a6a}.cd{color:#e898dc}.ce{color:#f0d36a}.cf{color:var(--t1)}
+mark{background:rgba(201,168,90,.28);color:inherit;border-radius:3px}
+.empty{color:var(--t3);margin-top:32px}
+.hide{display:none}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--t3);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:860px){
+ .layout{grid-template-columns:1fr}
+ aside{position:static;max-height:none}
+ .search{width:100%}
+ header .wrap{height:auto;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="">Zero Line</a>
+  <input class="search" id="q" type="search" placeholder="Поиск: ядро, F8, медали…" aria-label="Поиск по гайду">
+  <nav><a href="./">Установщик</a><a href="guide.html" class="on">Гайд и правила</a></nav>
+</div></header>
+
+<div class="wrap layout">
+  <aside id="toc" aria-label="Главы"></aside>
+  <main>
+    <h1>Гайд и правила</h1>
+    <p class="lead">Всё, что есть в книге квестов в игре: как идёт матч, ядро и база, классы, клавиши, магазин, события, режимы, медали и настройки. Обновляется вместе со сборкой.</p>
+    <div id="guide"><p class="empty">Загрузка…</p></div>
+  </main>
+</div>
+
+<footer><div class="wrap">
+  <span>Zero Line · фанатская сборка, не связана с Mojang и Microsoft</span>
+  <a href="https://github.com/ZiFlux/ZeroInstaller/releases">Все версии установщика</a>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// Цветовые коды Minecraft (&e, &l, &r…) → span'ы
+function fmt(line){
+  let out='',col='',b=false,i=false,buf='';
+  const flush=()=>{if(!buf)return;const cls=[col&&'c'+col,b&&'b',i&&'i'].filter(Boolean).join(' ');out+=cls?'<span class="'+cls+'">'+esc(buf)+'</span>':esc(buf);buf=''};
+  for(let k=0;k<line.length;k++){
+    const ch=line[k],nx=(line[k+1]||'').toLowerCase();
+    if(ch==='&'&&/[0-9a-fk-or]/.test(nx)){
+      flush();k++;
+      if(/[0-9a-f]/.test(nx)){col=nx;b=false;i=false}
+      else if(nx==='l')b=true; else if(nx==='o')i=true; else if(nx==='r'){col='';b=false;i=false}
+    }else buf+=ch;
+  }
+  flush();return out;
+}
+const plain=s=>s.replace(/&[0-9a-fk-or]/gi,'');
+
+function body(lines){
+  return lines.map(l=>{
+    if(l==='')return '<div class="gap"></div>';
+    const p=plain(l);
+    if(/^&7&o/.test(l))return '<p class="lead2">'+esc(p)+'</p>';
+    if(/^&6▸/.test(l))return '<p class="sec c6">'+esc(p)+'</p>';
+    if(/^&7✎/.test(l))return '<p class="note">'+fmt(l)+'</p>';
+    return '<p>'+fmt(l)+'</p>';
+  }).join('');
+}
+
+let DATA=null;
+function render(){
+  let toc='',html='';
+  for(const g of DATA.groups){
+    toc+='<h3>'+esc(g.title)+'</h3>';
+    for(const c of g.chapters){
+      toc+='<a href="#ch-'+c.id+'" data-ch="'+c.id+'">'+esc(plain(c.title))+'</a>';
+      html+='<section class="chapter" id="ch-'+c.id+'" data-ch="'+c.id+'"><h2>'+esc(plain(c.title))+'</h2>'+(c.subtitle?'<p class="sub">'+esc(plain(c.subtitle))+'</p>':'')+'<div class="quests">';
+      for(const q of c.quests){
+        const text=[q.title,q.subtitle,...q.text].map(plain).join(' \n ').toLowerCase();
+        html+='<article class="q" id="q-'+q.id+'" data-text="'+esc(text)+'"><h3>'+esc(plain(q.title))+(q.subtitle?'<small>'+esc(plain(q.subtitle))+'</small>':'')+'<a href="#q-'+q.id+'" aria-label="Ссылка">#</a></h3><div class="body">'+body(q.text)+'</div></article>';
+      }
+      html+='</div></section>';
+    }
+  }
+  $('toc').innerHTML=toc;$('guide').innerHTML=html;
+  spy();
+  if(location.hash){const el=document.querySelector(location.hash);if(el)el.scrollIntoView()}
+}
+
+// поиск: прячем квесты без совпадения, главы без квестов
+$('q').addEventListener('input',()=>{
+  const w=$('q').value.trim().toLowerCase();
+  document.querySelectorAll('.q').forEach(q=>q.classList.toggle('hide',!!w&&!q.dataset.text.includes(w)));
+  let any=false;
+  document.querySelectorAll('.chapter').forEach(c=>{const vis=!!c.querySelector('.q:not(.hide)');c.classList.toggle('hide',!vis);any=any||vis;
+    const a=document.querySelector('aside a[data-ch="'+c.dataset.ch+'"]');if(a)a.classList.toggle('hide',!vis)});
+  let e=$('none');if(!any){if(!e){e=document.createElement('p');e.id='none';e.className='empty';$('guide').appendChild(e)}e.textContent='Ничего не нашлось по «'+$('q').value+'».'}else if(e)e.remove();
+});
+
+// подсветка текущей главы в оглавлении
+function spy(){
+  const obs=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){
+    document.querySelectorAll('aside a').forEach(a=>a.classList.toggle('on',a.dataset.ch===e.target.dataset.ch))}},{rootMargin:'-80px 0px -70% 0px'});
+  document.querySelectorAll('.chapter').forEach(c=>obs.observe(c));
+}
+
+fetch('guide.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{DATA=d;render()})
+  .catch(()=>{$('guide').innerHTML='<p class="empty">Гайд пока не выложен — он появится после следующего обновления сборки.</p>'});
+</script>
+</body>
+</html>
