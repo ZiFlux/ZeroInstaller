@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9CF7E"/><stop offset=".5" stop-color="#B89A4A"/><stop offset="1" stop-color="#6E5E30"/>
+    </linearGradient>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A3430"/><stop offset="1" stop-color="#121816"/>
+    </linearGradient>
+  </defs>
+  <!-- щит-шеврон -->
+  <path d="M128 10 L232 46 V128 C232 190 186 226 128 248 C70 226 24 190 24 128 V46 Z" fill="url(#brass)"/>
+  <path d="M128 24 L218 55 V128 C218 182 178 214 128 233 C78 214 38 182 38 128 V55 Z" fill="url(#plate)"/>
+  <!-- линия фронта «0» -->
+  <circle cx="128" cy="122" r="58" fill="none" stroke="url(#brass)" stroke-width="10"/>
+  <path d="M86 164 L170 80" stroke="url(#brass)" stroke-width="10" stroke-linecap="square"/>
+  <!-- красная и синяя стороны -->
+  <path d="M60 122 h22" stroke="#D84A4A" stroke-width="8"/>
+  <path d="M174 122 h22" stroke="#4A86E0" stroke-width="8"/>
+  <!-- звёзды -->
+  <g fill="#E9CF7E">
+    <path d="M128 192 l5 10 11 1.6 -8 7.8 1.9 11 -9.9-5.2 -9.9 5.2 1.9-11 -8-7.8 11-1.6z"/>
+  </g>
+  <!-- заклёпки -->
+  <g fill="#C8CCBC"><circle cx="46" cy="60" r="3"/><circle cx="210" cy="60" r="3"/></g>
+</svg>
